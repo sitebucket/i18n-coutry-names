@@ -1,3 +1,79 @@
+// ==UserScript==
+// @name  convert ISO 3166-1 code to country names in i18n
+// @name:ar  تحويل رمز ISO 3166-1 إلى أسماء البلدان في i18n
+// @name:bg  преобразувайте код ISO 3166-1 в имена на държави в i18n
+// @name:zh-CN  将 ISO 3166-1 代码转换为 i18n 中的国家/地区名称
+// @name:zh-TW  將 ISO 3166-1 代碼轉換為 i18n 中的國家/地區名稱
+// @name:cs  převeďte kód ISO 3166-1 na názvy zemí v i18n
+// @name:da  konverter ISO 3166-1-kode til landenavne i i18n
+// @name:nl  converteer ISO 3166-1-code naar landnamen in i18n
+// @name:en  convert ISO 3166-1 code to country names in i18n
+// @name:eo  konverti ISO 3166-1-kodon al landnomoj en i18n
+// @name:fi  muuntaa ISO 3166-1-koodin maiden nimiksi i18n:ssä
+// @name:fr  convertir le code ISO 3166-1 en noms de pays dans i18n
+// @name:de  Konvertieren Sie den ISO 3166-1-Code in Ländernamen in i18n
+// @name:el  μετατρέψτε τον κωδικό ISO 3166-1 σε ονόματα χωρών στο i18n
+// @name:iw  המרת קוד ISO 3166-1 לשמות מדינות ב-i18n
+// @name:hu  konvertálja az ISO 3166-1 kódot országnevekre az i18n-ben
+// @name:id  konversi kode ISO 3166-1 ke nama negara di i18n
+// @name:it  converti il codice ISO 3166-1 in nomi di paesi in i18n
+// @name:ja  ISO 3166-1 コードを i18n の国名に変換する
+// @name:ko  ISO 3166-1 코드를 i18n의 국가 이름으로 변환
+// @name:pl  przekonwertować kod ISO 3166-1 na nazwy krajów w i18n
+// @name:pt  converter o código ISO 3166-1 para nomes de países em i18n
+// @name:ro  convertiți codul ISO 3166-1 în nume de țări în i18n
+// @name:ru  преобразовать код ISO 3166-1 в названия стран в i18n
+// @name:sr  претворити ИСО_3166-1 код у називе земаља у и18н
+// @name:sk  previesť kód ISO 3166-1 na názvy krajín v i18n
+// @name:es  convertir el código ISO 3166-1 a nombres de países en i18n
+// @name:sv  konvertera ISO 3166-1-kod till landsnamn i i18n
+// @name:th  แปลงรหัส ISO 3166-1 เป็นชื่อประเทศใน i18n
+// @name:tr  ISO 3166-1 kodunu i18n'de ülke adlarına dönüştürün
+// @name:uk  конвертувати код ISO 3166-1 у назви країн у i18n
+// @name:ug  ISO 3166-1 كودىنى i18n دىكى دۆلەت نامىغا ئايلاندۇرۇڭ
+// @name:vi  chuyển đổi mã ISO 3166-1 thành tên quốc gia trong i18n
+// @namespace  sitebucket.net
+// @icon  https://www.google.com/s2/favicons?sz=64&domain=greasyfork.org
+// @version  0.1
+// @author  sitebucket.net
+// @match  *://*/*
+// @license  Copyright sitebucket.net
+// @supportURL  https://github.com/sitebucket/i18n-coutry-names/issues
+// @description  convert ISO 3166-1 alpha-2 or alpha-3 or numeric contry/district code to country/district name in i18n
+// @description:ar  تحويل ISO 3166-1 alpha-2 أو alpha-3 أو رمز كونتري / حي رقمي إلى اسم البلد / الحي في i18n
+// @description:bg  конвертирайте ISO 3166-1 alpha-2 или alpha-3 или цифров код на държава/област в име на държава/област в i18n
+// @description:zh-CN  将 ISO 3166-1 alpha-2 或 alpha-3 或数字国家/地区代码转换为 i18n 中的国家/地区名称
+// @description:zh-TW  將 ISO 3166-1 alpha-2 或 alpha-3 或數字國家/地區代碼轉換為 i18n 中的國家/地區名稱
+// @description:cs  převést ISO 3166-1 alpha-2 nebo alpha-3 nebo číselný kód země/okresu na název země/okresu v i18n
+// @description:da  konverter ISO 3166-1 alpha-2 eller alpha-3 eller numerisk land/distriktskode til land/distriktsnavn i i18n
+// @description:nl  converteer ISO 3166-1 alfa-2 of alfa-3 of numerieke land-/districtscode naar land-/districtsnaam in i18n
+// @description:en  convert ISO 3166-1 alpha-2 or alpha-3 or numeric contry/district code to country/district name in i18n
+// @description:eo  konverti ISO 3166-1 alfa-2 aŭ alfa-3 aŭ nombra lando/distrikta kodo al lando/distrikta nomo en i18n
+// @description:fi  muuntaa ISO 3166-1 alpha-2 tai alfa-3 tai numeerinen kontry/piirikoodi maan/piirin nimeksi i18n:ssä
+// @description:fr  convertir ISO 3166-1 alpha-2 ou alpha-3 ou code numérique de pays/district en nom de pays/district dans i18n
+// @description:de  Konvertieren Sie ISO 3166-1 alpha-2 oder alpha-3 oder den numerischen Länder-/Bezirkscode in den Länder-/Bezirksnamen in i18n
+// @description:el  μετατροπή ISO 3166-1 alpha-2 ή alpha-3 ή αριθμητικό κωδικό contry/περιοχής σε όνομα χώρας/περιοχής στο i18n
+// @description:iw  המרת ISO 3166-1 אלפא-2 או אלפא-3 או קוד ארץ/מחוז מספרי לשם מדינה/מחוז ב-i18n
+// @description:hu  az ISO 3166-1 alfa-2 vagy alfa-3 vagy numerikus ország/körzet kód átalakítása ország/körzet nevére az i18n-ben
+// @description:id  konversi ISO 3166-1 alpha-2 atau alpha-3 atau kode contry/distrik numerik ke nama negara/distrik di i18n
+// @description:it  converti ISO 3166-1 alpha-2 o alpha-3 o codice numerico del paese/distretto in nome del paese/distretto in i18n
+// @description:ja  ISO 3166-1 alpha-2 または alpha-3 または数値の国/地区コードを i18n の国/地区名に変換します
+// @description:ko  ISO 3166-1 alpha-2 또는 alpha-3 또는 숫자 국가/지역 코드를 i18n의 국가/지역 이름으로 변환
+// @description:pl  przekonwertuj ISO 3166-1 alfa-2 lub alfa-3 lub numeryczny kod kraju/powiatu na nazwę kraju/powiatu w i18n
+// @description:pt  converter ISO 3166-1 alfa-2 ou alfa-3 ou código numérico do contry/distrito para o nome do país/distrito em i18n
+// @description:ro  convertiți ISO 3166-1 alpha-2 sau alpha-3 sau codul numeric de țară/district în numele țării/districtului în i18n
+// @description:ru  преобразовать ISO 3166-1 alpha-2 или alpha-3 или числовой код страны/района в название страны/района в i18n
+// @description:sr  претвори ИСО_3166-1 алфа-2 или алфа-3 или нумерички код земље/округа у назив земље/округа у и18н
+// @description:sk  previesť ISO 3166-1 alpha-2 alebo alpha-3 alebo číselný kód krajiny/okresu na názov krajiny/okresu v i18n
+// @description:es  convertir ISO 3166-1 alfa-2 o alfa-3 o código numérico de país/distrito a nombre de país/distrito en i18n
+// @description:sv  konvertera ISO 3166-1 alfa-2 eller alfa-3 eller numerisk lands-/distriktskod till lands-/distriktsnamn i i18n
+// @description:th  แปลง ISO 3166-1 alpha-2 หรือ alpha-3 หรือรหัส contry/เขตที่เป็นตัวเลขเป็นชื่อประเทศ/เขตใน i18n
+// @description:tr  ISO 3166-1 alpha-2 veya alpha-3 veya sayısal ülke/bölge kodunu i18n'de ülke/bölge adına dönüştürün
+// @description:uk  конвертувати ISO 3166-1 alpha-2 або alpha-3 або числовий код країни/району в назву країни/району в i18n
+// @description:ug  ISO 3166-1 alpha-2 ياكى alfa-3 ياكى رەقەملىك كود / رايون كودىنى i18n دىكى دۆلەت / رايون نامىغا ئايلاندۇرۇش
+// @description:vi  chuyển đổi ISO 3166-1 alpha-2 hoặc alpha-3 hoặc mã số liên bang / quận thành tên quốc gia / quận trong i18n
+// ==/UserScript==
+/* jslint esversion: 6 */
 const lang2idx = {ar:0,bn:1,de:2,en:3,es:4,fr:5,hi:6,it:7,jp:8,ko:9,pt:10,ru:11,"zh-cn":12,"zh-hk":13,"zh-tw":14};
 const a22idx = {AF:0,AX:1,AL:2,DZ:3,AS:4,AD:5,AO:6,AI:7,AQ:8,AG:9,AR:10,AM:11,AW:12,AU:13,AT:14,AZ:15,BS:16,BH:17,BD:18,BB:19,BY:20,BE:21,BZ:22,BJ:23,BM:24,BT:25,BO:26,BQ:27,BA:28,BW:29,BV:30,BR:31,IO:32,BN:33,BG:34,BF:35,BI:36,CV:37,KH:38,CM:39,CA:40,KY:41,CF:42,TD:43,CL:44,CN:45,CX:46,CC:47,CO:48,KM:49,CG:50,CD:51,CK:52,CR:53,CI:54,HR:55,CU:56,CW:57,CY:58,CZ:59,DK:60,DJ:61,DM:62,DO:63,EC:64,EG:65,SV:66,GQ:67,ER:68,EE:69,SZ:70,ET:71,FK:72,FO:73,FJ:74,FI:75,FR:76,GF:77,PF:78,TF:79,GA:80,GM:81,GE:82,DE:83,GH:84,GI:85,GR:86,GL:87,GD:88,GP:89,GU:90,GT:91,GG:92,GN:93,GW:94,GY:95,HT:96,HM:97,VA:98,HN:99,HK:100,HU:101,IS:102,IN:103,ID:104,IR:105,IQ:106,IE:107,IM:108,IL:109,IT:110,JM:111,JP:112,JE:113,JO:114,KZ:115,KE:116,KI:117,KP:118,KR:119,KW:120,KG:121,LA:122,LV:123,LB:124,LS:125,LR:126,LY:127,LI:128,LT:129,LU:130,MO:131,MG:132,MW:133,MY:134,MV:135,ML:136,MT:137,MH:138,MQ:139,MR:140,MU:141,YT:142,MX:143,FM:144,MD:145,MC:146,MN:147,ME:148,MS:149,MA:150,MZ:151,MM:152,NA:153,NR:154,NP:155,NL:156,NC:157,NZ:158,NI:159,NE:160,NG:161,NU:162,NF:163,MK:164,MP:165,NO:166,OM:167,PK:168,PW:169,PS:170,PA:171,PG:172,PY:173,PE:174,PH:175,PN:176,PL:177,PT:178,PR:179,QA:180,RE:181,RO:182,RU:183,RW:184,BL:185,SH:186,KN:187,LC:188,MF:189,PM:190,VC:191,WS:192,SM:193,ST:194,SA:195,SN:196,RS:197,SC:198,SL:199,SG:200,SX:201,SK:202,SI:203,SB:204,SO:205,ZA:206,GS:207,SS:208,ES:209,LK:210,SD:211,SR:212,SJ:213,SE:214,CH:215,SY:216,TW:217,TJ:218,TZ:219,TH:220,TL:221,TG:222,TK:223,TO:224,TT:225,TN:226,TR:227,TM:228,TC:229,TV:230,UG:231,UA:232,AE:233,GB:234,US:235,UM:236,UY:237,UZ:238,VU:239,VE:240,VN:241,VG:242,VI:243,WF:244,EH:245,YE:246,ZM:247,ZW:248};
 const a32idx = {AFG:0,ALA:1,ALB:2,DZA:3,ASM:4,AND:5,AGO:6,AIA:7,ATA:8,ATG:9,ARG:10,ARM:11,ABW:12,AUS:13,AUT:14,AZE:15,BHS:16,BHR:17,BGD:18,BRB:19,BLR:20,BEL:21,BLZ:22,BEN:23,BMU:24,BTN:25,BOL:26,BES:27,BIH:28,BWA:29,BVT:30,BRA:31,IOT:32,BRN:33,BGR:34,BFA:35,BDI:36,CPV:37,KHM:38,CMR:39,CAN:40,CYM:41,CAF:42,TCD:43,CHL:44,CHN:45,CXR:46,CCK:47,COL:48,COM:49,COG:50,COD:51,COK:52,CRI:53,CIV:54,HRV:55,CUB:56,CUW:57,CYP:58,CZE:59,DNK:60,DJI:61,DMA:62,DOM:63,ECU:64,EGY:65,SLV:66,GNQ:67,ERI:68,EST:69,SWZ:70,ETH:71,FLK:72,FRO:73,FJI:74,FIN:75,FRA:76,GUF:77,PYF:78,ATF:79,GAB:80,GMB:81,GEO:82,DEU:83,GHA:84,GIB:85,GRC:86,GRL:87,GRD:88,GLP:89,GUM:90,GTM:91,GGY:92,GIN:93,GNB:94,GUY:95,HTI:96,HMD:97,VAT:98,HND:99,HKG:100,HUN:101,ISL:102,IND:103,IDN:104,IRN:105,IRQ:106,IRL:107,IMN:108,ISR:109,ITA:110,JAM:111,JPN:112,JEY:113,JOR:114,KAZ:115,KEN:116,KIR:117,PRK:118,KOR:119,KWT:120,KGZ:121,LAO:122,LVA:123,LBN:124,LSO:125,LBR:126,LBY:127,LIE:128,LTU:129,LUX:130,MAC:131,MDG:132,MWI:133,MYS:134,MDV:135,MLI:136,MLT:137,MHL:138,MTQ:139,MRT:140,MUS:141,MYT:142,MEX:143,FSM:144,MDA:145,MCO:146,MNG:147,MNE:148,MSR:149,MAR:150,MOZ:151,MMR:152,NAM:153,NRU:154,NPL:155,NLD:156,NCL:157,NZL:158,NIC:159,NER:160,NGA:161,NIU:162,NFK:163,MKD:164,MNP:165,NOR:166,OMN:167,PAK:168,PLW:169,PSE:170,PAN:171,PNG:172,PRY:173,PER:174,PHL:175,PCN:176,POL:177,PRT:178,PRI:179,QAT:180,REU:181,ROU:182,RUS:183,RWA:184,BLM:185,SHN:186,KNA:187,LCA:188,MAF:189,SPM:190,VCT:191,WSM:192,SMR:193,STP:194,SAU:195,SEN:196,SRB:197,SYC:198,SLE:199,SGP:200,SXM:201,SVK:202,SVN:203,SLB:204,SOM:205,ZAF:206,SGS:207,SSD:208,ESP:209,LKA:210,SDN:211,SUR:212,SJM:213,SWE:214,CHE:215,SYR:216,TWN:217,TJK:218,TZA:219,THA:220,TLS:221,TGO:222,TKL:223,TON:224,TTO:225,TUN:226,TUR:227,TKM:228,TCA:229,TUV:230,UGA:231,UKR:232,ARE:233,GBR:234,USA:235,UMI:236,URY:237,UZB:238,VUT:239,VEN:240,VNM:241,VGB:242,VIR:243,WLF:244,ESH:245,YEM:246,ZMB:247,ZWE:248};
@@ -285,54 +361,3 @@ function num2country(num, lang="en") {
     let cidx = lang2idx[lang];
     return cs[cidx] === "" ? cs[3] : cs[cidx];
 }
-
-// console.log(a22country("AF"));
-// console.log(a22country("AF", "ar"));
-// console.log(a22country("AF", "bn"));
-// console.log(a22country("AF", "de"));
-// console.log(a22country("AF", "en"));
-// console.log(a22country("AF", "es"));
-// console.log(a22country("AF", "fr"));
-// console.log(a22country("AF", "hi"));
-// console.log(a22country("AF", "it"));
-// console.log(a22country("AF", "jp"));
-// console.log(a22country("AF", "ko"));
-// console.log(a22country("AF", "pt"));
-// console.log(a22country("AF", "ru"));
-// console.log(a22country("AF", "zh-cn"));
-// console.log(a22country("AF", "zh-hk"));
-// console.log(a22country("AF", "zh-tw"));
-// console.log("-----");
-// console.log(a32country("ALA"));
-// console.log(a32country("ALA", "ar"));
-// console.log(a32country("ALA", "bn"));
-// console.log(a32country("ALA", "de"));
-// console.log(a32country("ALA", "en"));
-// console.log(a32country("ALA", "es"));
-// console.log(a32country("ALA", "fr"));
-// console.log(a32country("ALA", "hi"));
-// console.log(a32country("ALA", "it"));
-// console.log(a32country("ALA", "jp"));
-// console.log(a32country("ALA", "ko"));
-// console.log(a32country("ALA", "pt"));
-// console.log(a32country("ALA", "ru"));
-// console.log(a32country("ALA", "zh-cn"));
-// console.log(a32country("ALA", "zh-hk"));
-// console.log(a32country("ALA", "zh-tw"));
-// console.log("-----");
-// console.log(num2country("008"));
-// console.log(num2country("008", "ar"));
-// console.log(num2country("008", "bn"));
-// console.log(num2country("008", "de"));
-// console.log(num2country("008", "en"));
-// console.log(num2country("008", "es"));
-// console.log(num2country("008", "fr"));
-// console.log(num2country("008", "hi"));
-// console.log(num2country("008", "it"));
-// console.log(num2country("008", "jp"));
-// console.log(num2country("008", "ko"));
-// console.log(num2country("008", "pt"));
-// console.log(num2country("008", "ru"));
-// console.log(num2country("008", "zh-cn"));
-// console.log(num2country("008", "zh-hk"));
-// console.log(num2country("008", "zh-tw"));
