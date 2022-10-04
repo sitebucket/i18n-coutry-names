@@ -3,13 +3,13 @@
 supported languages: `ar`, `bn`, `de`, `en`, `es`, `fr`, `hi`, `it`, `jp`, `ko`, `pt`, `ru`, `zh-cn`, `zh-hk`, `zh-tw`
 
 alpha-2 code to country name
-`a22country(a2, lang="en")`
+`a22country(a2, lang="en", codes=false)`
 
 alpha-3 code to country name
-`a32country(a3, lang="en")`
+`a32country(a3, lang="en", codes=false)`
 
 numeric code to country name
-`num2country(num, lang="en")`
+`num2country(num, lang="en", codes=false)`
 
 # test
 ```js

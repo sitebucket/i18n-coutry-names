@@ -276,6 +276,8 @@ function a32country(a3, lang="en", codes=false) {
     return code2country(a3, a32idx, lang, codes);
 }
 function num2country(num, lang="en", codes=false) {
+	num = "000" + num.toString();
+	num = num.substr(num.length - 3, 3);
     return code2country(num, num2idx, lang, codes);
 }
 
@@ -333,5 +335,7 @@ console.log(num2country("008", "ru"));
 console.log(num2country("008", "zh-cn"));
 console.log(num2country("008", "zh-hk"));
 console.log(num2country("008", "zh-tw"));
+console.log(num2country("8", "zh-tw", false));
+console.log(num2country(8, "zh-tw", false));
 console.log(num2country("008", "zh-tw", true));
 console.log(num2country("008", "zh-tw", false));

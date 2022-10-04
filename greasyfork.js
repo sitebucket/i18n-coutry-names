@@ -352,5 +352,7 @@ function a32country(a3, lang="en", codes=false) {
     return code2country(a3, a32idx, lang, codes);
 }
 function num2country(num, lang="en", codes=false) {
+	num = "000" + num.toString();
+	num = num.substr(num.length - 3, 3);
     return code2country(num, num2idx, lang, codes);
 }
