@@ -332,32 +332,25 @@ function convertlang(lang) {
     if (lang === "zh-mo") lang = "zh-hk";
     if (lang === "zh-my") lang = "zh-cn";
     if (lang === "zh-sg") lang = "zh-cn";
-    if (lang.includes("-") && ["ar", "de", "en", "es", "fr", "it", "pt", "ru", "zh"].includes(lang.split("-")[0])) lang = lang.split("-")[0];
+    if (lang.includes("-") && ["ar", "de", "en", "es", "fr", "it", "pt", "ru"].includes(lang.split("-")[0])) lang = lang.split("-")[0];
     return lang;
 }
-function a22country(a2, lang="en") {
-    a2 = a2.toUpperCase();
+function code2country(code, dict, lang, codes) {
+    code = code.toUpperCase();
     lang = convertlang(lang);
-    if (a22idx[a2] === undefined) return "";
+    if (dict[code] === undefined) return "";
     if (lang2idx[lang] === undefined) lang = "en";
-    let cs = idx2cs[a22idx[a2]];
+    let cs = idx2cs[dict[code]];
     let cidx = lang2idx[lang];
-    return cs[cidx] === "" ? cs[3] : cs[cidx];
+    codes = codes ? `/${cs[15]}/${cs[16]}/${cs[17]}` : "";
+    return (cs[cidx] === "" ? cs[3] : cs[cidx]) + codes;
 }
-function a32country(a3, lang="en") {
-    a3 = a3.toUpperCase();
-    lang = convertlang(lang);
-    if (a32idx[a3] === undefined) return "";
-    if (lang2idx[lang] === undefined) lang = "en";
-    let cs = idx2cs[a32idx[a3]];
-    let cidx = lang2idx[lang];
-    return cs[cidx] === "" ? cs[3] : cs[cidx];
+function a22country(a2, lang="en", codes=false) {
+    return code2country(a2, a22idx, lang, codes);
 }
-function num2country(num, lang="en") {
-    lang = convertlang(lang);
-    if (num2idx[num] === undefined) return "";
-    if (lang2idx[lang] === undefined) lang = "en";
-    let cs = idx2cs[num2idx[num]];
-    let cidx = lang2idx[lang];
-    return cs[cidx] === "" ? cs[3] : cs[cidx];
+function a32country(a3, lang="en", codes=false) {
+    return code2country(a3, a32idx, lang, codes);
+}
+function num2country(num, lang="en", codes=false) {
+    return code2country(num, num2idx, lang, codes);
 }
