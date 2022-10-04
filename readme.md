@@ -29,6 +29,8 @@ console.log(a22country("AF", "ru"));
 console.log(a22country("AF", "zh-cn"));
 console.log(a22country("AF", "zh-hk"));
 console.log(a22country("AF", "zh-tw"));
+console.log(a22country("AF", "zh-tw", true));
+console.log(a22country("AF", "zh-tw", false));
 console.log("-----");
 console.log(a32country("ALA"));
 console.log(a32country("ALA", "ar"));
@@ -46,6 +48,8 @@ console.log(a32country("ALA", "ru"));
 console.log(a32country("ALA", "zh-cn"));
 console.log(a32country("ALA", "zh-hk"));
 console.log(a32country("ALA", "zh-tw"));
+console.log(a32country("ALA", "zh-tw", true));
+console.log(a32country("ALA", "zh-tw", false));
 console.log("-----");
 console.log(num2country("008"));
 console.log(num2country("008", "ar"));
@@ -63,6 +67,8 @@ console.log(num2country("008", "ru"));
 console.log(num2country("008", "zh-cn"));
 console.log(num2country("008", "zh-hk"));
 console.log(num2country("008", "zh-tw"));
+console.log(num2country("008", "zh-tw", true));
+console.log(num2country("008", "zh-tw", false));
 ```
 
 output
@@ -84,6 +90,8 @@ Afeganistão
 阿富汗
 阿富汗
 阿富汗
+阿富汗/AF/AFG/004
+阿富汗
 -----
 Åland Islands
 جزر أولاند
@@ -101,6 +109,8 @@ Aland, Ilhas
 奥兰
 奧蘭
 奧蘭
+奧蘭/AX/ALA/248
+奧蘭
 -----
 Albania
 ألبانيا
@@ -117,6 +127,8 @@ Albânia
 Албания
 阿尔巴尼亚
 阿爾巴尼亞
+阿爾巴尼亞
+阿爾巴尼亞/AL/ALB/008
 阿爾巴尼亞
 ```
 
