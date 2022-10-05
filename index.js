@@ -266,8 +266,8 @@ function code2country(code, dict, lang, codes) {
     if (lang2idx[lang] === undefined) lang = "en";
     let cs = idx2cs[dict[code]];
     let cidx = lang2idx[lang];
-    codes = codes ? `/${cs[15]}/${cs[16]}/${cs[17]}` : "";
-    return (cs[cidx] === "" ? cs[3] : cs[cidx]) + codes;
+    let cn = cs[cidx] === "" ? cs[3] : cs[cidx];
+    return codes ? [cn].concat(cs.slice(15, 18)) : cn;
 }
 function a22country(a2, lang="en", codes=false) {
     return code2country(a2, a22idx, lang, codes);
@@ -276,8 +276,8 @@ function a32country(a3, lang="en", codes=false) {
     return code2country(a3, a32idx, lang, codes);
 }
 function num2country(num, lang="en", codes=false) {
-	num = "000" + num.toString();
-	num = num.substr(num.length - 3, 3);
+    num = "000" + num.toString();
+    num = num.substr(num.length - 3, 3);
     return code2country(num, num2idx, lang, codes);
 }
 

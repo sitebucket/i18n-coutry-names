@@ -342,8 +342,8 @@ function code2country(code, dict, lang, codes) {
     if (lang2idx[lang] === undefined) lang = "en";
     let cs = idx2cs[dict[code]];
     let cidx = lang2idx[lang];
-    codes = codes ? `/${cs[15]}/${cs[16]}/${cs[17]}` : "";
-    return (cs[cidx] === "" ? cs[3] : cs[cidx]) + codes;
+    let cn = cs[cidx] === "" ? cs[3] : cs[cidx];
+    return codes ? [cn].concat(cs.slice(15, 18)) : cn;
 }
 function a22country(a2, lang="en", codes=false) {
     return code2country(a2, a22idx, lang, codes);
